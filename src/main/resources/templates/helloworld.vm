@@ -1,1 +1,9 @@
-THE OUTPUT IS : $output
+<html>
+    <head></head>
+    <body>
+        <h1>THE OUTPUT IS : $output</h1>
+    </body>
+    <script>
+        alert("hehe$output");
+    </script>
+</html>
