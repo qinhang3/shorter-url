@@ -41,8 +41,65 @@ public class GameLogic implements Game {
      * 比较有拓展性
      * @return
      */
-    private boolean isWin() {
-        //TODO
+    private boolean isWin(int x, int y) {
+        int color  = chessMap[x][y];
+
+        int sum = 0;
+        for (int xx=x-1; xx>=0; xx--){
+            if (chessMap[xx][y] != color)
+                break;
+            sum ++;
+        }
+        for (int xx=x+1; xx<LEN; xx++){
+            if (chessMap[xx][y] != color)
+                break;
+            sum ++;
+        }
+        if (sum >= 5)
+            return true;
+
+        sum = 0;
+        for (int yy=y-1; yy>=0; yy--){
+            if (chessMap[x][yy] != color)
+                break;
+            sum ++;
+        }
+        for (int yy=y+1; yy<LEN; yy++){
+            if (chessMap[x][yy] != color)
+                break;
+            sum ++;
+        }
+        if (sum >= 5)
+            return true;
+
+        sum = 0;
+        for (int xx=x-1, yy=y-1; xx>=0 && yy>=0; xx--, yy--){
+            if (chessMap[xx][yy] != color)
+                break;
+            sum ++;
+        }
+        for (int xx=x+1, yy=y+1; xx<LEN && yy<LEN; xx++, yy++){
+            if (chessMap[xx][yy] != color)
+                break;
+            sum++;
+        }
+        if (sum >= 5)
+            return true;
+
+        sum = 0;
+        for (int xx=x+1, yy=y-1; xx<LEN && yy>=0; xx++, yy--){
+            if (chessMap[xx][yy] != color)
+                break;
+            sum ++;
+        }
+        for (int xx=x-1, yy=y+1; xx>=0 && yy<LEN; xx--, yy++){
+            if (chessMap[xx][yy] != color)
+                break;
+            sum ++;
+        }
+        if (sum >= 5)
+            return true;
+
         return false;
     }
 
@@ -59,7 +116,7 @@ public class GameLogic implements Game {
         isBlackRound();
         chessMap[x][y] = BLACK;
         cnt++;
-        return isWin();
+        return isWin(x, y);
     }
 
     @Override
@@ -68,6 +125,6 @@ public class GameLogic implements Game {
         isWhiteRound();
         chessMap[x][y] = WHITE;
         cnt++;
-        return isWin();
+        return isWin(x, y);
     }
 }
