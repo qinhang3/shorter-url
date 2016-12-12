@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <meta charset="UTF-8">
+        <title>React App - cllgeek(cllgeek.com)</title>
+    </head>
     <body>
-        <h1>THE OUTPUT IS : $output</h1>
+        <div id="app"></div>
+        <script src="/index.js"></script>
     </body>
-    <script>
-        alert("hehe$output");
-    </script>
 </html>
