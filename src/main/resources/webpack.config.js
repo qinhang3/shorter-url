@@ -1,3 +1,5 @@
+var path = require('path');
+
 var config = {
     entry: './js/main.js',
     output: {
@@ -9,14 +11,25 @@ var config = {
         port: 7777
     },
     module: {
-        loaders: [ {
-            test: /.jsx?$/,
-            exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-                presets: ['es2015', 'react']
+        loaders: [
+            {
+                test: /.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'babel',
+                query: {
+                    presets: ['es2015', 'react']
+                }
+            },
+            {
+                test : /\.css$/,
+                loader: 'style!css'
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url-loader?limit=819200'
+                // loader: 'file-loader'
             }
-        }]
+        ]
     }
 }
 
